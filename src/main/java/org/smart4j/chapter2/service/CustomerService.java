@@ -1,6 +1,7 @@
 package org.smart4j.chapter2.service;
 
-;import org.smart4j.chapter2.model.Customer;
+;import org.smart4j.chapter2.helper.DatabaseHelper;
+import org.smart4j.chapter2.model.Customer;
 
 import java.util.List;
 import java.util.Map;
@@ -22,9 +23,8 @@ public class CustomerService {
      * @return
      */
     public List<Customer> getCustomerList() {
-
-        // TODO
-        return null;
+        String sql = "SELECT * FROM customer";
+        return DatabaseHelper.queryEntityList(Customer.class, sql);
     }
 
     /**
@@ -32,10 +32,9 @@ public class CustomerService {
      * @param id 客户ID
      * @return
      */
-    public Customer getCustomer(Integer id) {
-
-        // TODO
-        return null;
+    public Customer getCustomer(Long id) {
+        String sql = "SELECT * FROM customer where id = ?";
+        return DatabaseHelper.queryEntity(Customer.class, sql, id);
     }
 
     /**
@@ -44,9 +43,7 @@ public class CustomerService {
      * @return
      */
     public boolean createCustomer(Map<String, Object> fieldMap) {
-
-        // TODO
-        return Boolean.FALSE;
+        return DatabaseHelper.insertEntity(Customer.class, fieldMap);
     }
 
     /**
@@ -54,10 +51,8 @@ public class CustomerService {
      * @param fieldMap
      * @return
      */
-    public boolean updateCustomer(Map<String, Object> fieldMap) {
-
-        // TODO
-        return Boolean.FALSE;
+    public boolean updateCustomer(Long id, Map<String, Object> fieldMap) {
+        return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
     /**
@@ -65,10 +60,8 @@ public class CustomerService {
      * @param id
      * @return
      */
-    public boolean deleteCustomer(Integer id) {
-
-        // TODO
-        return Boolean.FALSE;
+    public boolean deleteCustomer(Long id) {
+        return DatabaseHelper.deleteEntity(Customer.class, id);
     }
 
 }

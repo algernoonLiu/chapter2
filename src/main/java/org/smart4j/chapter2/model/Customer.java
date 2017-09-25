@@ -17,7 +17,7 @@ public class Customer {
     /**
      * ID
      */
-    private Integer id;
+    private Long id;
     /**
      * 客户名称
      */
@@ -39,11 +39,11 @@ public class Customer {
      */
     private String remark;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
